@@ -10,6 +10,18 @@ for i in range(1,len(l)):
 print(min,max)
 
 2.Same or not
+
+def solution(l1,l2):
+    if(len(l1)!=len(l2)):
+        return False
+    for i in range(len(l1)):
+        if(l1[i]!=l2[i]):
+            return False
+    return True
+l1=list(map(int,input().split()))
+l2=list(map(int,input().split()))
+print(solution(l1,l2))
+
 3.Sum or odd and even numbers
 4.Add two arrays
 5.Search in an array
