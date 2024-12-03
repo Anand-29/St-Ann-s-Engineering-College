@@ -82,5 +82,15 @@ while(i<j):
 print(*l)
 
 8.Print frequency of data
+
+l=input("Enter a string: ")
+c=[0]*26
+for i in range(len(l)):
+    c[ord(l[i])-97]+=1
+print("Frequency:")
+for i in range(26):
+    if(c[i]>0):
+        print(chr(i+97)," -> ",c[i])
+
 9.Insert a data at position
 10.Delete a data at position
