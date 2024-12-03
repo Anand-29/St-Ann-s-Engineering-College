@@ -61,6 +61,16 @@ else:
     print(searchdata,"is present")
 
 6.Print sorted array
+
+l=list(map(int,input().split()))
+for i in range(len(l)):
+    for j in range(len(l)):
+        if(l[i]<l[j]):
+            t=l[i]
+            l[i]=l[j]
+            l[j]=t      #l[i],l[j]=l[j],l[i]
+print(*l)
+
 7.Reverse an array
 8.Print frequency of data
 9.Insert a data at position
