@@ -14,16 +14,26 @@ class LinkedList:
             while(t.next!=None):
                 t=t.next
             t.next=newnode    
+    def insertfront(self,data):
+        newnode = Node(data)
+        newnode.next=self.head
+        self.head=newnode
+    def insertposition(self,pos,data):
+        newnode =Node(data)
+        t1=self.head
+        while(pos>1):
+            t1=t1.next
+            pos-=1
+        t2=t1.next
+        t1.next=newnode
+        newnode.next=t2
     def display(self):
         t=self.head;
         while(t!=None):
             print(t.data,end=" ")
             t=t.next
 ob=LinkedList()
-n=int(input("Enter the number of data: "))
-print("Enter",n,"data: ")
-for i in range(n):
-    a=int(input())
-    ob.insertend(a)
-print("Data's of Linked list")
-ob.display()
+ob.insertend(10)
+ob.insertend(20)
+ob.insertfront(30);ob.insertposition(2,40);
+ob.display()            #github.com/Anand-29
