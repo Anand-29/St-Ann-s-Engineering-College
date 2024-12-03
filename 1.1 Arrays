@@ -23,6 +23,17 @@ l2=list(map(int,input().split()))
 print(solution(l1,l2))
 
 3.Sum of odd and even numbers
+
+l=list(map(int,input().split()))
+oddsum,evensum=0,0
+for i in range(len(l)):
+    if(l[i]%2==0):
+        evensum=evensum+l[i]
+    else:
+        oddsum+=l[i]
+print(evensum,oddsum)
+
+
 4.Add two arrays
 5.Search in an array
 6.Print sorted array
