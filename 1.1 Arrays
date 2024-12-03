@@ -22,7 +22,7 @@ l1=list(map(int,input().split()))
 l2=list(map(int,input().split()))
 print(solution(l1,l2))
 
-3.Sum or odd and even numbers
+3.Sum of odd and even numbers
 4.Add two arrays
 5.Search in an array
 6.Print sorted array
