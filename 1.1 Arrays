@@ -47,6 +47,19 @@ l2=list(map(int,input().split()))
 print(solution(l1,l2))
 
 5.Search in an array
+
+l=list(map(int,input("Enter data:").split()))
+searchdata=int(input("Enter search data: "))
+f=0
+for i in range(len(l)):
+    if(l[i]==searchdata):
+        f=1
+        break
+if(f==0):
+    print(searchdata,"is not present")
+else:
+    print(searchdata,"is present")
+
 6.Print sorted array
 7.Reverse an array
 8.Print frequency of data
