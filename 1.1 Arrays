@@ -35,6 +35,17 @@ print(evensum,oddsum)
 
 
 4.Add two arrays
+
+def solution(l1,l2):
+    if(len(l1)!=len(l2)):
+        return False
+    for i in range(len(l1)):
+        l1[i]=l1[i]+l2[i]
+    return l1;
+l1=list(map(int,input().split()))
+l2=list(map(int,input().split()))
+print(solution(l1,l2))
+
 5.Search in an array
 6.Print sorted array
 7.Reverse an array
