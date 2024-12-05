@@ -79,3 +79,127 @@ ob.insert(10);ob.insert(20);ob.insert(30);ob.insert(23)
 ob.insertfront(40);ob.deletefront();ob.deleteend()
 ob.insertposition(2,100);ob.deleteposition(2)
 ob.display();ob.displayrev()
+
+#Doubly linked list:-
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.next=None
+        self.prev=None
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def insertend(self,data):
+        newnode=Node(data)
+        if(self.head==None):
+            self.head=newnode
+        else:
+            t=self.head
+            while(t.next!=None):
+                t=t.next
+            t.next=newnode
+            newnode.prev=t
+    def insertfront(self,data):
+        newnode=Node(data)
+        newnode.next=self.head
+        self.head.prev=newnode
+        self.head=newnode
+    def insertposition(self,ind,data):
+        if(self.head==None):
+            print("Empty list")
+            return
+        if(ind>self.size()):
+            print("No index")
+            return
+        newnode=Node(data)
+        t1=self.head
+        while(ind>1):
+            t1=t1.next
+            ind-=1
+        t2=t1.next
+        t1.next=newnode
+        newnode.next=t2
+        t2.prev=newnode
+        newnode.prev=t1
+    def deletefront(self):
+        if(self.head==None):
+            print("Empty list")
+            return
+        t=self.head
+        self.head=t.next
+        self.head.prev=None
+        t=None
+    def deleteend(self):
+        if(self.head==None):
+            print("Empty list")
+            return
+        t1=self.head
+        t2=t1.next
+        while(t2.next!=None):
+            t1=t1.next
+            t2=t2.next
+        t1.next=None
+        t2=None
+    def deleteposition(self,ind):
+        if(self.head==None):
+            print("Empty list")
+            return
+        if(ind>self.size()):
+            print("No index")
+            return
+        t1=self.head
+        while(ind>1):
+            t1=t1.next
+            ind-=1
+        t2=t1.next
+        t1.next=t2.next
+        t2=t2.next
+        t2.prev=t1
+        t2=None
+    def size(self):
+        t=self.head
+        c=0
+        while(t!=None):
+            t=t.next
+            c+=1
+        return c
+    def display(self):
+        t=self.head
+        while(t!=None):
+            print(t.data,end=" ")
+            t=t.next
+ob=LinkedList()
+while(True):
+    print("1.insertend 2.insertfront 3.insertposition \
+    4.deletefront 5.deleteend 6.deleteposition\
+    7.display 8.stop:- ")
+    n=int(input())
+    if(n==1):
+        a=int(input("Enter the data:- "))
+        ob.insertend(a)
+    elif(n==2):
+        a=int(input("Enter the data:- "))
+        ob.insertfront(a)
+    elif(n==3):
+        a=int(input("Enter the ind:- "))
+        b=int(input("Enter the data:- "))
+        ob.insertposition(a,b)
+    elif(n==4):
+        ob.deletefront()
+        print("Front data deleted")
+    elif(n==5):
+        ob.deleteend()
+        print("End data deleted")
+    elif(n==6):
+        print("Enter index to be deleted:- ")
+        a=int(input())
+        ob.deleteposition(a)
+    elif(n==7):
+        print("Data's of list:-")
+        ob.display()
+    else:
+        break
+
+
+
+
