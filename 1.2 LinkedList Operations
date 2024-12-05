@@ -81,7 +81,7 @@ ob=LinkedList()
 while(True):
     print("1.insertend 2.insertfront 3.insertposition \
     4.deletefront 5.deleteend 6.deleteposition\
-    7.display 8.stop:- "
+    7.display 8.stop:- ")
     n=int(input())
     if(n==1):
         a=int(input("Enter the data:- "))
