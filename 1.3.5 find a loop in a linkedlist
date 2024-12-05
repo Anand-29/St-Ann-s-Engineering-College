@@ -1,0 +1,32 @@
+class Node:
+    def __init__(self,d):
+        self.data=d;
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def insert(self,data):
+        newnode=Node(data)
+        if(self.head==None):
+            self.head=newnode
+        else:
+            t=self.head
+            while(t.next!=None):
+                t=t.next
+            t.next=newnode
+    def display(self):
+        t=self.head
+        while(t!=None):
+            print(t.data)
+            t=t.next
+    def createloop(self):
+        t1=self.head
+        while(t1.next!=None):
+            t1=t1.next
+        t1.next=self.head.next
+#find a loop in a linkedlist
+ob=LinkedList()
+ob.insert(1);ob.insert(2);ob.insert(3);
+ob.insert(4);ob.insert(5);ob.insert(6)
+ob.createloop()
+ob.display()
