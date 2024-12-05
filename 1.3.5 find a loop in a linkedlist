@@ -24,9 +24,19 @@ class LinkedList:
         while(t1.next!=None):
             t1=t1.next
         t1.next=self.head.next
+    def solution(self):
+        t1=self.head
+        t2=t1.next
+        while(t1!=None and t2.next!=None ):
+            t1=t1.next
+            t2=t2.next.next
+            if(t1.data==t2.data):
+                return True
+        return False
 #find a loop in a linkedlist
 ob=LinkedList()
 ob.insert(1);ob.insert(2);ob.insert(3);
 ob.insert(4);ob.insert(5);ob.insert(6)
 ob.createloop()
-ob.display()
+print(ob.solution())
+#ob.display()
