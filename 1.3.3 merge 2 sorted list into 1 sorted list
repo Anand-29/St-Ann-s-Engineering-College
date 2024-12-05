@@ -1,0 +1,19 @@
+#merge 2 sorted list into 1 sorted list
+l1=list(map(int,input("Enter l1 data:- ").split())
+l2=list(map(int,input("Enter l2 data:- ").split())
+l3=[]
+i,j,k=0,0,0
+while( i<len(l1) and j<len(l2)):
+    if(l1[i] < l2[j]):
+        l3.append(l1[i])
+        k+=1;i+=1
+    elif(l1[i] > l2[j]):
+        l3.append(l2[j])
+        k+=1;j+=1
+while(i<len(l1)):
+    l3.append(l1[i])
+    i+=1
+while(j<len(l2)):
+    l3.append(l2[j])
+    j+=1
+print(l3)
