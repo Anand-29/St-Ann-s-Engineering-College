@@ -1,0 +1,32 @@
+#stack using Node
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.next=None
+class Stack:
+    def __init__(self):
+        self.top=None
+    def empty(self):
+        if(self.top==None):
+            return True
+        return False
+    def push(self,data):
+        newnode=Node(data)
+        if(self.top==None):
+            self.top=newnode
+        else:
+            newnode.next=self.top
+            self.top=newnode
+    def pop(self):
+        if(self.empty()==True):
+            return "Empty stack"
+        t=self.top.data
+        self.top=self.top.next
+        return t
+    def topdata(self):
+        if(self.top==None):
+            return "Empty stack"
+        return self.top.data
+ob=Stack()
+ob.push(10);ob.push(20);ob.push(30);ob.push(40)
+print(ob.pop());print(ob.topdata());print(ob.empty())
