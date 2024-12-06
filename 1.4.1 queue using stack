@@ -1,0 +1,40 @@
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.next=None
+class Stack:
+    def __init__(self):
+        self.top=None
+    def empty(self):
+        if(self.top==None):
+            return True
+        return False
+    def push(self,data):
+        newnode=Node(data)
+        if(self.top==None):
+            self.top=newnode
+        else:
+            newnode.next=self.top
+            self.top=newnode
+    def pop(self):
+        if(self.empty()==True):
+            return "Empty stack"
+        t=self.top.data
+        self.top=self.top.next
+        return t
+    def topdata(self):
+        if(self.top==None):
+            return "Empty stack"
+        return self.top.data
+#queue using stack
+s1=Stack()
+s2=Stack()
+for i in range(1,5):
+    s1.push(i*10)
+while(s1.empty()!=True):
+    t=s1.pop()
+    s2.push(t)
+while(s2.empty()!=True):
+    print(s2.topdata(),end=" ")
+    s2.pop()
+
