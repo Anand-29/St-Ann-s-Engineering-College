@@ -1,0 +1,45 @@
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.next=None
+class Stack:
+    def __init__(self):
+        self.top=None
+        self.mini=0
+    def push(self,data):
+        if(self.top==None):
+            newnode=Node(data)
+            self.top=newnode
+            self.mini=data
+        elif(data>self.mini):
+            newnode=Node(data)
+            newnode.next=self.top
+            self.top=newnode
+        else:
+            t=self.mini
+            self.mini=data
+            data=2*data-t
+            newnode=Node(data)
+            newnode.next=self.top
+            self.top=newnode
+        if(self.top==None):
+            self.mini=0
+    def pop(self):
+        if(self.top.data>self.mini):
+            t=self.top.data
+            self.top=self.top.next
+            return t
+        else:
+            
+            self.mini=2*self.mini-self.top.data
+            t=self.mini
+            self.top=self.top.next
+            return t
+s=Stack()
+l=[5,2,1]
+for i in range(len(l)):
+    s.push(l[i])
+
+print(s.mini,s.pop())
+print(s.mini,s.pop())
+print(s.mini,s.pop())
