@@ -1,0 +1,41 @@
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.left=None
+        self.right=None
+class BST:
+    def insert(self,root,data):
+        if(root==None):
+            newnode=Node(data)
+            return newnode
+        elif(data<root.data):
+            root.left=self.insert(root.left,data)
+        elif(data>root.data):
+            root.right=self.insert(root.right,data)
+        return root
+    def preorder(self,root):
+        if(root==None):
+            return
+        print(root.data,end=" ")
+        self.preorder(root.left)
+        self.preorder(root.right)
+    def postorder(self,root):
+        if(root==None):
+            return
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.data,end=" ")
+    def inorder(self,root):
+        if(root==None):
+            return 
+        self.inorder(root.left)
+        print(root.data,end=" ")
+        self.inorder(root.right)
+ob=BST()
+root=None
+root=ob.insert(root,10)
+ob.insert(root,6);ob.insert(root,14)
+ob.insert(root,7);ob.insert(root,15)
+print("Preorder: ");ob.preorder(root)
+print("\nPostorder: ");ob.postorder(root)
+print("\nInorder: ");ob.inorder(root)
