@@ -1,0 +1,54 @@
+class Node:
+    def __init__(self,d):
+        self.data=d
+        self.left=None
+        self.right=None
+class BST:
+    def insert(self,root,data):
+        if(root==None):
+            newnode=Node(data)
+            return newnode
+        elif(data<root.data):
+            root.left=self.insert(root.left,data)
+        elif(data>root.data):
+            root.right=self.insert(root.right,data)
+        return root
+    def display(self,root):
+        if(root==None):
+            return
+        self.display(root.left)
+        print(root.data,end=" ")
+        self.display(root.right)
+    def height(self,root):
+        if(root==None):
+            return 0
+        left=1+self.height(root.left)
+        right=1+self.height(root.right)
+        if(left>right):
+            return left
+        else:
+            return right
+    def helper(self,root,level):
+        if(root==None):
+            return
+        if(level==1):
+            print(root.data,end=" ")
+        else:
+            self.helper(root.left,level-1)
+            self.helper(root.right,level-1)
+    def levelorder(self,root):
+        h=self.height(root)
+        for i in range(1,h+1):
+            print(" "*(h+1-i),end="")
+            self.helper(root,i)
+            print()
+ob=BST()
+root=None
+root=ob.insert(root,4);ob.insert(root,2)
+ob.insert(root,1);ob.insert(root,3);ob.insert(root,6)
+ob.insert(root,5);ob.insert(root,7)
+ob.levelorder(root)
+
+
+
+
