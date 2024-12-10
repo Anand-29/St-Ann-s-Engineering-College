@@ -1,0 +1,41 @@
+class Queue:
+    maxi=10
+    q=[0]*maxi
+    f,b=-1,-1
+    def enqueue(self,data):
+        if(self.f==-1):
+            self.f+=1
+            self.b+=1
+            self.q[self.b]=data
+        elif(self.b>self.maxi-1):
+            print("overflow")
+        else:
+            self.b+=1
+            self.q[self.b]=data
+    def dequeue(self):
+        if(self.f==-1 or self.f>self.b ):
+            self.b=-1
+            self.f=-1
+            return "underflow"
+        t=self.q[self.f]
+        self.f+=1
+        return t
+    def empty(self):
+        if(self.f==-1 or self.f>self.b):
+            return True
+        else:
+            return False
+    def size(self):
+        return self.b-self.f+1
+ob=Queue()
+ob.enqueue(10);ob.enqueue(20);ob.enqueue(30)
+print(ob.dequeue())
+print(ob.size())
+print(ob.dequeue())
+print(ob.dequeue())
+print(ob.dequeue())
+print(ob.empty())
+
+
+
+
