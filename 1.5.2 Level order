@@ -1,0 +1,81 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+class BinaryTree:
+    def insert(self,root,data):
+        if(root==None):
+            newnode=Node(data)
+            return newnode
+        elif(data<root.data):
+            root.left=self.insert(root.left,data)
+        elif(data>root.data):
+            root.right=self.insert(root.right,data)
+        return root
+    def inorder(self,root):
+        if(root==None):
+            return
+        self.inorder(root.left)
+        print(root.data,end=" ")
+        self.inorder(root.right)
+    def preorder(self,root):
+        if(root==None):
+            return
+        print(root.data,end=" ")
+        self.preorder(root.left)
+        self.preorder(root.right)
+    def postorder(self,root):
+        if root==None:
+            return
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.data,end=" ")
+    def minimum(self,root):
+        while(root.left!=None):
+            root=root.left
+        print("Minimum: ",root.data)
+    def maximum(self,root):
+        while(root.right!=None):
+            root=root.right
+        print("Greatest: ",root.data)
+    def height(self,root):
+        if(root==None):
+            return 0
+        left=1+self.height(root.left)
+        right=1+ob.height(root.right)
+        if(left>right):
+            return left
+        else:
+            return right
+    def levelorder(self,root):
+       h=self.height(root)
+       for i in range(1,h+1):
+           print("Level : ",i," -> ",end=" ")
+           ob.helper(root,i)
+           print()
+    def helper(self,root,l):
+        if(root==None):
+            return
+        if(l==1):
+            print(root.data,end=" ")
+        self.helper(root.left,l-1)
+        self.helper(root.right,l-1)
+ob=BinaryTree()
+root=None
+while(True):
+    data=int(input("Enter a data or enter -1 to exit: "))
+    if(data<0):
+        break
+    root=ob.insert(root,data)
+print("Inorder: ");ob.inorder(root);print()
+print("preorder: ");ob.preorder(root);print()
+print("postorder: ");ob.postorder(root);print()
+ob.minimum(root);ob.maximum(root)
+print("Height ",ob.height(root))
+ob.levelorder(root)
+
+
+
+
+
