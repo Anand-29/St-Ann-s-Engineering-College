@@ -1,0 +1,41 @@
+#color fill algorithm
+m=[[1,2,3,4,7],
+   [5,6,7,8,4],
+   [2,7,4,0,1],
+   [9,8,7,6,5],
+   [4,6,3,6,2]]
+r=5;c=5
+for i in range(c): #1st row data
+    print(m[0][i],end=" ")
+print("\n")
+for i in range(r): #1st column data
+    print(m[i][0],end=" ")
+print("\nAll the data")
+for i in range(r):
+    for j in range(c):
+        print(m[i][j],end=" ")
+    print()
+print("diagonal data")
+for i in range(r):
+    for j in range(c):
+        if(i==j):
+            print(m[i][j],end=" ")
+        else:
+            print("*",end=" ")
+    print()
+print("front diagonal data")
+for i in range(r):
+    for j in range(c):
+        if(i+j==c-1):
+            print(m[i][j],end=" ")
+        else:
+            print("*",end=" ")
+    print()
+print(" x pattern")
+for i in range(r):
+    for j in range(c):
+        if(i==j or i+j==c-1):
+            print(m[i][j],end=" ")
+        else:
+            print("*",end=" ")
+    print()
