@@ -1,0 +1,53 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+class Tree:
+    def insert(self,root,data):
+        if(root==None):
+            newnode=Node(data)
+            return newnode
+        elif(data<root.data):
+            root.left=self.insert(root.left,data)
+        elif(data>root.data):
+            root.right=self.insert(root.right,data)
+        return root
+    def delete(self,root,data):
+        if(root==None):
+            return root
+        elif(data<root.data):
+            root.left=self.delete(root.left,data)
+        elif(data>root.data):
+            root.right=self.delete(root.right,data)
+        else:
+            if(root.left==None):
+                temp=root.right
+                root=None
+                return temp
+            elif(root.right==None):
+                temp=root.left
+                root=None
+                return temp
+            else:
+                t1=root
+                t2=root.right
+                while(t2.left!=None):
+                    t1=t2
+                    t2=t2.left
+                root.data=t2.data
+                if(t2.right!=None):
+                    t1.left=t2.right
+                elif(root==t1):
+                    t1.right=t2.right
+        return root    
+    def display(self,root):
+        if(root==None):
+            return
+        self.display(root.left)
+        print(root.data)
+        self.display(root.right)
+ob=Tree()
+root=None;root=ob.insert(root,10);ob.insert(root,7);ob.insert(root,12)
+ob.insert(root,8);ob.insert(root,5)
+ob.delete(root,8);ob.display(root)
