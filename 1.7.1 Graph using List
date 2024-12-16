@@ -1,0 +1,43 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Graph:
+    def __init__(self,v):
+        self.vertex=v
+        self.graph=[None]*v
+    def insert(self,ver,edge):
+        newnode=Node(edge)
+        if(self.graph[ver]==None):
+            self.graph[ver]=newnode
+        else:
+            temp=self.graph[ver]
+            while(temp.next!=None):
+                temp=temp.next
+            temp.next=newnode
+    def DFS(self,visited,v):
+        visited[v]=True
+        print(v,end=" -> ")
+        temp=self.graph[v]
+        while(temp!=None):
+            data=temp.data
+            if(visited[data]==False):
+                self.DFS(visited,data)
+            temp=temp.next
+ob=Graph(4)
+ob.insert(0,1)
+ob.insert(0,2)
+ob.insert(0,3)
+ob.insert(1,2)
+ob.insert(2,3)
+ob.insert(3,1)
+visited=[False]*4
+v=2
+ob.DFS(visited,v)
+
+
+
+
+
+
+
