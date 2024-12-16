@@ -1,0 +1,25 @@
+def insert(g,i,j):
+    g[i][j]=1
+def display(g,vertex):
+    for i in range(vertex):
+        for j in range(vertex):
+            print(g[i][j],end=" ")
+        print()
+def dfs(g,visited,vertex,v):
+    visited[v]=True
+    print(v,end=" ")
+    for i in range(vertex):
+        if(g[v][i]==1 and visited[i]!=True):
+            dfs(g,visited,vertex,i)
+#graph using array
+vertex=4
+g=[[0 for i in range(vertex)] for j in range(vertex)]
+insert(g,0,1);insert(g,0,2);insert(g,0,3)
+insert(g,3,1);insert(g,1,2)
+display(g,vertex)
+visited=[False]*vertex;v=0;print("DFS: ")
+dfs(g,visited,vertex,v)
+
+
+
+
