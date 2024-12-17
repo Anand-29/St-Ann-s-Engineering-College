@@ -1,0 +1,35 @@
+def safe(q,r,c):
+    if(r>=0 and r<=4 and c>=0 and c<=4 and q[r][c]==1):
+        return True
+    return False
+def solution(q,s,r,c):
+    if(r==4 and c==4 and q[r][c]==1):
+        s[r][c]=1
+        return True
+    if(safe(q,r,c)==True):
+        s[r][c]=1
+        if(solution(q,s,r+1,c)==True):
+            return True
+        if(solution(q,s,r,c+1)==True):
+            return True
+        s[r][c]=0
+    return False
+#Rat in a maze
+q=[[1,1,1,1,1],
+   [1,0,0,0,1],
+   [1,1,1,0,1],
+   [1,0,1,0,0],
+   [1,0,1,1,1]]
+   
+s=[[0,0,0,0,0],
+   [0,0,0,0,0],
+   [0,0,0,0,0],
+   [0,0,0,0,0],
+   [0,0,0,0,0]]
+r=0;c=0
+solution(q,s,r,c)
+for i in range(5):
+    for j in range(5):
+        print(s[i][j],end=" ")
+    print()
+    
