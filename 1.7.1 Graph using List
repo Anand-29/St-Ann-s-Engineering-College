@@ -11,17 +11,25 @@ class Graph:
         if(self.graph[ver]==None):
             self.graph[ver]=newnode
         else:
-            temp=self.graph[ver]
-            while(temp.next!=None):
-                temp=temp.next
-            temp.next=newnode
+            t=self.graph[ver]
+            while(t.next!=None):
+                t=t.next
+            t.next=newnode
+    def display(self):
+        for i in range(self.vertex):
+            t=self.graph[i]
+            print(i,end=" : ")
+            while(t!=None):
+                print(t.data,end=" -> ")
+                t=t.next
+            print()
     def DFS(self,visited,v):
         visited[v]=True
         print(v,end=" -> ")
         temp=self.graph[v]
         while(temp!=None):
             data=temp.data
-            if(visited[data]==False):
+            if(visited[data]!=True):
                 self.DFS(visited,data)
             temp=temp.next
 ob=Graph(4)
@@ -31,13 +39,10 @@ ob.insert(0,3)
 ob.insert(1,2)
 ob.insert(2,3)
 ob.insert(3,1)
+ob.display()
 visited=[False]*4
-v=2
+v=3
 ob.DFS(visited,v)
-
-
-
-
 
 
 
