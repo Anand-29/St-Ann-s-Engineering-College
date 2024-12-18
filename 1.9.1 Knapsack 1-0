@@ -1,0 +1,35 @@
+#knapsack
+def solution(pr,wt,bagc,n):
+    if(n<0 or bagc==0):
+        return 0
+    if(wt[n]>bagc):
+        return 0+solution(pr,wt,bagc,n-1)
+    else:
+        pick=pr[n]+solution(pr,wt,bagc-wt[n],n-1)
+        notpick=0+solution(pr,wt,bagc,n-1)
+        return max(pick,notpick)
+bagc=8
+n=5
+wt=[2,3,1,4,5]
+pr=[3,4,2,5,1]
+#ans=solution(pr,wt,bagc,n-1)
+dp=[[0 for x in range(bagc+1)] for y in range(n+1)]
+for i in range(1,n+1):
+    for j in range(1,bagc+1):
+        if(wt[i-1]>j):
+            dp[i][j]=0+dp[i-1][j]
+        else:
+            pick=pr[i-1]+dp[i-1][j-wt[i-1]]
+            notpick=0+dp[i-1][j]
+            dp[i][j]=max(pick,notpick)
+for i in range(n+1):
+    for j in range(bagc+1):
+        print(dp[i][j],end=" ")
+    print()
+print("max profit: ",dp[n][bagc])
+
+
+
+
+
+
