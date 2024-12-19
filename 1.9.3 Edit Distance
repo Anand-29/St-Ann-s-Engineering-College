@@ -1,0 +1,55 @@
+def solution(a,b,i,j):
+    if(i<0 and j<0): 
+        return 0
+    if(j<0):
+        return len(a) 
+    if(i<0):
+        return len(b) 
+    if(a[i]==b[j]):
+        return 0+solution(a,b,i-1,j-1)
+    else:
+        insert=1+solution(a,b,i-1,j)  
+        delete=1+solution(a,b,i,j-1) 
+        update=1+solution(a,b,i-1,j-1) 
+        return min(insert,delete,update) 
+        
+a="ef" 
+b="a"
+ans=solution(a,b,len(a)-1,len(b)-1) 
+print(ans)
+dp=[[0 for x in range(len(b)+1)]for y in range(len(a)+1)] 
+for i in range(len(a)+1):
+    for j in range(len(b)+1):
+        if(i==0):
+            dp[i][j]=j
+        if(j==0):
+            dp[i][j]=i 
+for i in range(1,len(a)+1):
+    for j in range(1,len(b)+1):
+        if(a[i-1]==b[j-1]):
+            dp[i][j]=0+dp[i-1][j-1]
+        else:
+            insert=1+dp[i-1][j] 
+            delete=1+dp[i][j-1]
+            update=1+dp[i-1][j-1] 
+            dp[i][j]=min(insert,delete,update)
+print(dp[len(a)][len(b)]) 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
